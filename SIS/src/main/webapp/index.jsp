@@ -8,25 +8,41 @@
       font-family: 'Segoe UI', sans-serif;
       margin: 0;
       padding: 0;
-      background-color: #f4f4f4;
     }
 
-    h2 {
+    h1 {
       background-color: #3d5a40;
       color: white;
       padding: 20px;
       margin: 0;
-      text-align: center;
     }
 
     .container {
-      margin: 30px auto;
       width: 90%;
-      max-width: 1000px;
+      max-width: 1200px;
       background-color: white;
-      border-radius: 12px;
-      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
       padding: 20px;
+    }
+
+    .sub-heading {
+      text-align: center;
+      font-size: 28px;
+      font-weight: bold;
+      color: #3d5a40;
+    }
+
+    .btn {
+      display: inline-block;
+      margin: 10px 10px 20px 0;
+      padding: 10px 20px;
+      background-color: #3d5a40;
+      color: white;
+      text-decoration: none;
+      border-radius: 6px;
+    }
+
+    .btn:hover {
+      background-color: #2e4230;
     }
 
     table {
@@ -43,30 +59,15 @@
     table th, table td {
       padding: 20px;
       text-align: center;
-
     }
 
-
-
-    .a {
-      display: inline-block;
-      margin-top: 20px;
-      padding: 10px 16px;
-      background-color: #3d5a40;
-      color: white;
-      text-decoration: none;
-      border-radius: 6px;
-    }
-
-    a:hover {
-      background-color: #2e4230;
-    }
     .edit-icon {
-      width: 16px;
-      height: 16px;
+      width: 20px;
+      height: 20px;
       fill: #007bff;
       vertical-align: middle;
     }
+
     .edit-link {
       text-decoration: none;
     }
@@ -74,29 +75,33 @@
   </style>
 </head>
 <body>
-<h2>Student Information System</h2>
+<h1>Student Information System</h1>
 
 <div class="container">
-  <h2>Student Information</h2>
+  <div class="sub-heading">Student Information</div>
 
-  <a class="a" href="addStudent.jsp">+ Add Student</a>
-  <a class="a" href="addScore.jsp">+ Add Score</a>
+  <a class="btn" href="addStudent.jsp">+ Student</a>
+  <a class="btn" href="addScore.jsp">+ Score</a>
+
   <table>
     <thead>
     <tr>
+      <th>Id</th>
+      <th>Student Id</th>
       <th>Student Name</th>
-      <th>Subject</th>
+      <th>Subject Name</th>
       <th>Score 1</th>
       <th>Score 2</th>
       <th>Credit</th>
       <th>Grade</th>
-      <th>Edit</th>
+      <th></th>
     </tr>
     </thead>
     <tbody>
     <%
       List<StudentScore> scores = (List<StudentScore>) request.getAttribute("scores");
       if (scores != null && !scores.isEmpty()) {
+        int count = 1;
         for (StudentScore s : scores) {
           double score1 = s.getScore1();
           double score2 = s.getScore2();
@@ -109,6 +114,8 @@
           else grade = "F";
     %>
     <tr>
+      <td><%= count++ %></td>
+      <td><%= s.getStudent().getStudentId() %></td>
       <td><%= s.getStudent().getFullName() %></td>
       <td><%= s.getSubject().getSubjectName() %></td>
       <td><%= score1 %></td>
@@ -126,14 +133,13 @@
     } else {
     %>
     <tr>
-      <td colspan="7">No scores available</td>
+      <td colspan="9">No scores available</td>
     </tr>
     <%
       }
     %>
     </tbody>
   </table>
-
 </div>
 </body>
 </html>
