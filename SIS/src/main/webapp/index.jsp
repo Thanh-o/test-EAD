@@ -61,14 +61,16 @@
     a:hover {
       background-color: #2e4230;
     }
-
+    .edit-icon {
+      width: 16px;
+      height: 16px;
+      fill: #007bff;
+      vertical-align: middle;
+    }
     .edit-link {
       text-decoration: none;
     }
 
-    .edit-cell {
-      text-align: center;
-    }
   </style>
 </head>
 <body>
