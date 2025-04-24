@@ -88,7 +88,7 @@
       <th>Subject</th>
       <th>Score 1</th>
       <th>Score 2</th>
-      <th>Final Score</th>
+      <th>Credit</th>
       <th>Grade</th>
       <th>Edit</th>
     </tr>
@@ -113,7 +113,7 @@
       <td><%= s.getSubject().getSubjectName() %></td>
       <td><%= score1 %></td>
       <td><%= score2 %></td>
-      <td><%= String.format("%.2f", finalScore) %></td>
+      <td><%= s.getSubject().getCredit() %></td>
       <td><%= grade %></td>
       <td><a class="edit-link" href="editScore.jsp?id=<%= s.getStudent().getStudentId() %>">
         <svg class="edit-icon" viewBox="0 0 24 24">
